@@ -13,3 +13,8 @@
 # **Što bi se dalo poboljšati?**
 
 Ono što bi se dalo poboljšati, svakako ljepši frontend, prompt bi svakako trebao biti puno detaljniji, u smislu da treba sadržavati i informacije o tome što činiti kada se dogodi nekakav nepredviđeni scenarij.
+
+# **Kako bi se sustav mogao provjeravati?**
+
+Sustav bi se mogao provjeravati koristeći pytest library za one narudžbe za koje znamo egzaktni .json fajl koji program treba vratiti. Što se tiče drugih slučajeva u kojima program treba predložiti nešto recimo bez mesa, tu ne možemo egzaktno znati koji će oblik rješenja biti, tako da bi to bilo dobro provjeriti ručno.
+Također, nakon istraživanja došao sam do saznanja da je unutar FastAPI TestClient postoji ugrađen pytest pa je i to jedna od solucija
