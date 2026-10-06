@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Restaurant Order Manager</title>
+  </head>
+  <body>
+    <h2>Naruči hranu</h2>
+    <textarea
+      id="orderInput"
+      placeholder="Npr. dvije margarite i jednu colu..."
+    ></textarea
+    ><br />
+    <button onclick="sendOrder()">Pošalji narudžbu</button>
+
+    <h3>Rezultat:</h3>
+    <pre id="resultOutput"></pre>
+
+    <script>
+      async function sendOrder() {
+        const text = document.getElementById("orderInput").value;
+
+        // communication with the backend
+        const response = await fetch("http://127.0.0.1:8000/order", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ order_text: text }),
+        });
+
+        const data = await response.json();
+        // Prikaz rezultata na ekranu
+        document.getElementById("resultOutput").innerText = JSON.stringify(
+          data,
+          null,
+          2,
+        );
+      }
+    </script>
+  </body>
+</html>
